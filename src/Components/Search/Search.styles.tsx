@@ -6,7 +6,7 @@ export const Root = styled.div<{ img: string }>`
   background-position: center;
   display: flex;
   justify-content: center;
-  padding: 4rem 9rem;
+  padding: 4rem 10rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
 `;

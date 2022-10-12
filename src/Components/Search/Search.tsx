@@ -11,7 +11,7 @@ const Search = () => {
   return (
     <Root img={require("../../assets/images/backgroundImg.png")}>
       <Container>
-        <IconSpan> Work</IconSpan>
+        <IconSpan>Work</IconSpan>
         <Input
           placeholder="Title, companies, expertise or benefits"
           value={term}

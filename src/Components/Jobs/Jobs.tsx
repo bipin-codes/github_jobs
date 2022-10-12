@@ -9,7 +9,11 @@ const Jobs = () => {
       company: "Kasisto",
       tag: "Full Time",
       location: "New York",
-      posted: new Date(new Date().setDate(new Date().getDate() - 5)),
+      posted: new Date(
+        new Date().setDate(
+          new Date().getDate() - Math.floor(Math.random() * 100 + 1)
+        )
+      ),
       logo: "im.png",
     },
     {
@@ -17,7 +21,11 @@ const Jobs = () => {
       company: "Kasisto",
       tag: "Full Time",
       location: "New York",
-      posted: new Date(new Date().setDate(new Date().getDate() - 5)),
+      posted: new Date(
+        new Date().setDate(
+          new Date().getDate() - Math.floor(Math.random() * 100 + 1)
+        )
+      ),
       logo: "im.png",
     },
     {
@@ -25,7 +33,11 @@ const Jobs = () => {
       company: "Kasisto",
       tag: "Full Time",
       location: "New York",
-      posted: new Date(new Date().setDate(new Date().getDate() - 5)),
+      posted: new Date(
+        new Date().setDate(
+          new Date().getDate() - Math.floor(Math.random() * 100 + 1)
+        )
+      ),
       logo: "im.png",
     },
     {
@@ -33,7 +45,11 @@ const Jobs = () => {
       company: "Kasisto",
       tag: "Full Time",
       location: "New York",
-      posted: new Date(new Date().setDate(new Date().getDate() - 5)),
+      posted: new Date(
+        new Date().setDate(
+          new Date().getDate() - Math.floor(Math.random() * 100 + 1)
+        )
+      ),
       logo: "im.png",
     },
     {
@@ -41,7 +57,11 @@ const Jobs = () => {
       company: "Kasisto",
       tag: "Full Time",
       location: "New York",
-      posted: new Date(new Date().setDate(new Date().getDate() - 5)),
+      posted: new Date(
+        new Date().setDate(
+          new Date().getDate() - Math.floor(Math.random() * 100 + 1)
+        )
+      ),
       logo: "im.png",
     },
     {
@@ -49,13 +69,17 @@ const Jobs = () => {
       company: "Kasisto",
       tag: "Full Time",
       location: "New York",
-      posted: new Date(new Date().setDate(new Date().getDate() - 5)),
+      posted: new Date(
+        new Date().setDate(
+          new Date().getDate() - Math.floor(Math.random() * 100 + 1)
+        )
+      ),
       logo: "im.png",
     },
   ]);
   return (
     <Container>
-      {jobs.map((job, index) => (
+      {jobs.slice(0, 5).map((job, index) => (
         <Job {...job} key={index} />
       ))}
     </Container>
