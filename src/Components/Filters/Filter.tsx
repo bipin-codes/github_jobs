@@ -1,11 +1,13 @@
 import React, { ChangeEvent, useState } from "react";
 import {
   Container,
+  FullTimeContainer,
   FullTimeInput,
   IconSpan,
   Input,
   InputLabel,
   LocationContainer,
+  LocationFilter,
   StyledHeading,
   ToggleContainer,
   ToggleInput,
@@ -21,21 +23,21 @@ const Filter = () => {
 
   return (
     <Container>
-      <div style={{ marginTop: "2rem" }}>
+      <FullTimeContainer>
         <FullTimeInput id="full_time" />
         <InputLabel target="full_time">Full Time</InputLabel>
-      </div>
-      <div>
+      </FullTimeContainer>
+      <LocationContainer>
         <StyledHeading>Location</StyledHeading>
-        <LocationContainer placeholder="City,state,zip code or country">
+        <LocationFilter placeholder="City,state,zip code or country">
           <IconSpan>public</IconSpan>
           <Input
             placeholder="City, state, zip code or country"
             value={location}
             onChange={onInputChanged}
           />
-        </LocationContainer>
-      </div>
+        </LocationFilter>
+      </LocationContainer>
       {locations.map((location, index) => (
         <ToggleContainer key={index}>
           <ToggleInput value={location} id={index.toString()}></ToggleInput>

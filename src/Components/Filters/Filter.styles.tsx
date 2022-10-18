@@ -3,9 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   flex-grow: 1;
 `;
+
+export const FullTimeContainer = styled.div`
+  margin-top: 2rem;
+`;
 export const FullTimeInput = styled.input.attrs({ type: "checkbox" })`
   border-color: #b9bdcf;
   color: #b9bdcf;
+  margin-right: 0.5rem;
 `;
 type InputProps = {
   target: string;
@@ -21,18 +26,23 @@ export const InputLabel = styled.label.attrs<InputProps>(({ target }) => ({
 export const StyledHeading = styled.h6`
   color: #b9bdcf;
   font-size: 1rem;
+
+  margin: 1rem 0;
 `;
 
 export const LocationContainer = styled.div`
+  margin-top: 1rem;
+`;
+export const LocationFilter = styled.div`
   border: none;
   outline: none;
   background-color: #fff;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  line-height: 14px;
-  border-radius: 4px;
+  line-height: 0.87rem;
+  border-radius: 0.25rem;
   width: 23rem;
-  height: 4rem;
+  height: 3rem;
   align-items: center;
   justify-content: space-around;
   display: flex;
@@ -56,13 +66,17 @@ export const Input = styled.input.attrs({
   flex-grow: 9;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  line-height: 14px;
+  line-height: 0.87rem;
+
+  margin-right: 0.5rem;
 `;
 
 export const ToggleContainer = styled.div`
-  margin: 0.5rem;
+  margin-top: 1rem;
 `;
 export const ToggleInput = styled.input.attrs({
   type: "radio",
   name: "location",
-})``;
+})`
+  margin-right: 0.5rem;
+`;

@@ -52,14 +52,13 @@ export const Tag = styled.div`
 export const JobFooter = styled.div`
   display: flex;
   align-self: flex-end;
-  justify-content: space-evenly;
-  flex: 1;
-  align-items: center;
+
+  // flex: 1;
+  // align-items: center;
 `;
 
 export const FooterLabel = styled.div`
   color: #b9bdcf;
-  flex-grow: 1;
 `;
 export const FooterIcon = styled.span.attrs({
   className: "material-symbols-outlined",
@@ -67,6 +66,6 @@ export const FooterIcon = styled.span.attrs({
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
   font-size: 1rem;
   margin: 0 0.5rem;
-  text-align: center;
+  text-align: right;
   color: #b9bdcf;
 `;
