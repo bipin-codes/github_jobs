@@ -20,11 +20,21 @@ const Paginator: React.FC<{
   }, [range]);
   return (
     <Container>
-      <Button isActive={false} label="<" onClick={onClickPrev}></Button>
+      <Button
+        enabled={currentIndex !== 1}
+        isActive={false}
+        label="<"
+        onClick={onClickPrev}
+      ></Button>
       {/* DOT TO LOWER LIMIT */}
       {currentIndex - 1 > limit && (
         <>
-          <Button label={`1`} onClick={onClickIndex} isActive={false} />
+          <Button
+            enabled={true}
+            label={`1`}
+            onClick={onClickIndex}
+            isActive={false}
+          />
           <IconSpan>more_horiz</IconSpan>
         </>
       )}
@@ -37,6 +47,7 @@ const Paginator: React.FC<{
         )
         .map((value, index) => (
           <Button
+            enabled={true}
             key={index}
             label={`${value}`}
             onClick={onClickIndex}
@@ -49,6 +60,7 @@ const Paginator: React.FC<{
         <>
           <IconSpan>more_horiz</IconSpan>
           <Button
+            enabled={true}
             label={pages[pages.length - 1].toString()}
             onClick={onClickIndex}
             isActive={false}
@@ -56,7 +68,12 @@ const Paginator: React.FC<{
         </>
       )}
 
-      <Button label=">" isActive={false} onClick={onClickNext}></Button>
+      <Button
+        enabled={currentIndex !== range}
+        label=">"
+        isActive={false}
+        onClick={onClickNext}
+      ></Button>
     </Container>
   );
 };

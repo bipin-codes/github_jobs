@@ -16,11 +16,11 @@ export const DefaultButton = styled.button<{ active: boolean }>`
   font-size: 0.75rem;
   font-weight: 400;
 
-  ${({ active }) =>
-    active && activePage} //if shrink is true apply the css above
+  ${({ active }) => active && activePage}
 
-    ${({ active }) =>
+  ${({ active, disabled }) =>
     !active &&
+    !disabled &&
     css`
       &:hover {
         border-color: #1e86ff;

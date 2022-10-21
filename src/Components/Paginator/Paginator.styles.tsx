@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-left: "auto";
+  text-align: right;
 `;
 export const IconSpan = styled.span.attrs({
   className: "material-symbols-outlined",
