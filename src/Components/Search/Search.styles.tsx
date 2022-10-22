@@ -53,6 +53,9 @@ export const Button = styled.button`
   @media (max-width: 527px) {
     padding: 0.5rem;
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const IconSpan = styled.span.attrs({

@@ -24,7 +24,11 @@ export interface IJob {
 
 const Job: FC<IJob> = ({ title, logo, company, tag, posted, location }) => {
   return (
-    <JobCard>
+    <JobCard
+      onClick={() => {
+        console.log(`Job ${title}`);
+      }}
+    >
       <JobImage image={require("../../assets/images/im.png")}></JobImage>
       <div
         style={{ display: "flex", justifyContent: "space-between", flex: 1 }}

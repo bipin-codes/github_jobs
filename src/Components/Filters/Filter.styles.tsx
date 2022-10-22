@@ -28,6 +28,9 @@ export const InputLabel = styled.label.attrs<InputProps>(({ target }) => ({
   font-family: "Poppins", sans-serif;
   color: #334680;
   font-weight: 500;
+  &:hover {
+    font-weight: 800;
+  }
 `;
 
 export const LocationContainer = styled.div`
@@ -71,7 +74,6 @@ export const Input = styled.input.attrs({
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 0.87rem;
-
   margin-right: 0.5rem;
 `;
 

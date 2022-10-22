@@ -5,12 +5,20 @@ export const JobCard = styled.div`
   margin: 2rem 0;
   background-color: #fff;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 0.25rem;
+  border: solid 1px #333;
+  border-color: transparent;
   @media (max-width: 496px) {
     padding: 0.5rem;
   }
   @media (max-width: 350px) {
     padding: 0.2rem;
+  }
+  &:hover {
+    transform: scale(1.005);
+
+    border: solid 1px #b9bdcf;
+    transition: transform 0.2s linear, border-color 0.2s linear;
   }
 `;
 export const JobImage = styled.img.attrs<{ image: string }>(({ image }) => ({
@@ -27,7 +35,6 @@ export const JobContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // flex-grow: 1;
   margin-left: 1rem;
   flex: 1;
 `;
@@ -49,10 +56,6 @@ export const JobFooter = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  // @media (max-width: 496px) {
-  //   display: block;
-  //   flex-direction: column;
-  // }
 `;
 export const FooterLeft = styled.div`
   border: 1px solid #334680;
