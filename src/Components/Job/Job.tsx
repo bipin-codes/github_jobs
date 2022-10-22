@@ -13,6 +13,7 @@ import {
 } from "./Job.styles";
 
 import Moment from "react-moment";
+import { useNavigate, useNavigation } from "react-router-dom";
 export interface IJob {
   company: string;
   title: string;
@@ -23,12 +24,10 @@ export interface IJob {
 }
 
 const Job: FC<IJob> = ({ title, logo, company, tag, posted, location }) => {
+  const navigate = useNavigate();
+  const onJobSelected = () => navigate("job");
   return (
-    <JobCard
-      onClick={() => {
-        console.log(`Job ${title}`);
-      }}
-    >
+    <JobCard onClick={onJobSelected}>
       <JobImage image={require("../../assets/images/im.png")}></JobImage>
       <div
         style={{ display: "flex", justifyContent: "space-between", flex: 1 }}
