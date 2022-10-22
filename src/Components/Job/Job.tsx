@@ -13,7 +13,7 @@ import {
 } from "./Job.styles";
 
 import Moment from "react-moment";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export interface IJob {
   company: string;
   title: string;
