@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./Routes/Home";
+import Home from "Routes/Home/Home";
+import JobDetail from "Routes/JobDetail/JobDetail";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
+        <Route path="job" element={<JobDetail />} />
       </Routes>
     </BrowserRouter>
   );

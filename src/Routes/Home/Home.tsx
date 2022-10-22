@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import Filter from "../Components/Filters/Filter";
-import Jobs from "../Components/Jobs/Jobs";
-import Paginator from "../Components/Paginator/Paginator";
-import Search from "../Components/Search/Search";
+import Filter from "Components/Filters/Filter";
+
+import Jobs from "Components/Jobs/Jobs";
+import Paginator from "Components/Paginator/Paginator";
+import Search from "Components/Search/Search";
 import { HomeBody, HomeContainer, HomeHeader, StyledSpan } from "./Home.styles";
 
 const Home = () => {
