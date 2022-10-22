@@ -13,7 +13,7 @@ const Paginator: React.FC<{
 
   const [pages, setPages] = useState([0]);
 
-  const limit = 2;
+  const limit = 1;
 
   useEffect(() => {
     setPages(Array.from(Array(range + 1).keys()).filter((x) => x !== 0));

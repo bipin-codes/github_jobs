@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   text-align: right;
+
+  @media (max-width: 680px) {
+    text-align: center;
+  }
 `;
 export const IconSpan = styled.span.attrs({
   className: "material-symbols-outlined",

@@ -16,6 +16,11 @@ export const DefaultButton = styled.button<{ active: boolean }>`
   font-size: 0.75rem;
   font-weight: 400;
 
+  @media (max-width: 680px) {
+    padding: 0.6rem;
+    margin: 0.2rem;
+  }
+
   ${({ active }) => active && activePage}
 
   ${({ active, disabled }) =>
