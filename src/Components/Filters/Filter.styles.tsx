@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  flex-grow: 1;
+  flex-grow: 2;
+  margin: 2rem;
+  margin-left: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  @media (max-width: 847px) {
+    margin: 0.5rem;
+  }
 `;
 
 export const FullTimeContainer = styled.div`
@@ -23,15 +30,13 @@ export const InputLabel = styled.label.attrs<InputProps>(({ target }) => ({
   font-weight: 500;
 `;
 
+export const LocationContainer = styled.div`
+  margin: 0.5rem 0;
+`;
 export const StyledHeading = styled.h6`
   color: #b9bdcf;
   font-size: 1rem;
-
   margin: 1rem 0;
-`;
-
-export const LocationContainer = styled.div`
-  margin-top: 1rem;
 `;
 export const LocationFilter = styled.div`
   border: none;
@@ -41,9 +46,8 @@ export const LocationFilter = styled.div`
   font-size: 1rem;
   line-height: 0.87rem;
   border-radius: 0.25rem;
-  width: 23rem;
-  height: 3rem;
   align-items: center;
+  padding: 1rem 0.5rem;
   justify-content: space-around;
   display: flex;
   color: #b9bdcf;

@@ -9,6 +9,13 @@ export const Root = styled.div<{ img: string }>`
   padding: 4rem 10rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
+
+  @media (max-width: 1100px) {
+    padding: 2rem 5rem;
+  }
+  @media (max-width: 815px) {
+    padding: 2rem 2rem;
+  }
 `;
 
 export const Container = styled.div`
@@ -27,10 +34,11 @@ export const Input = styled.input.attrs({
   border: none;
   outline: none;
   background-color: #fff;
-  flex-grow: 9;
+  flex-grow: 8;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 14px;
+  text-overflow: ellipsis;
 `;
 export const Button = styled.button`
   background-color: #1e86ff;
@@ -39,10 +47,12 @@ export const Button = styled.button`
   color: #fff;
   border-radius: 0.25rem;
   flex-grow: 1;
-  width: 9rem;
-  height: 4rem;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
+  padding: 1rem;
+  @media (max-width: 527px) {
+    padding: 0.5rem;
+  }
 `;
 
 export const IconSpan = styled.span.attrs({

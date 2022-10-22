@@ -5,10 +5,11 @@ import {
   JobCard,
   JobContent,
   JobImage,
-  Tag,
+  FooterLeft,
   JobFooter,
   FooterIcon,
   FooterLabel,
+  FooterRight,
 } from "./Job.styles";
 
 import Moment from "react-moment";
@@ -31,16 +32,19 @@ const Job: FC<IJob> = ({ title, logo, company, tag, posted, location }) => {
         <JobContent>
           <Company>{company}</Company>
           <Title>{title}</Title>
-          <Tag>{tag}</Tag>
+
+          <JobFooter>
+            <FooterLeft>{tag}</FooterLeft>
+            <FooterRight>
+              <FooterIcon> Public </FooterIcon>
+              <FooterLabel>{location}</FooterLabel>
+              <FooterIcon> Schedule </FooterIcon>
+              <FooterLabel>
+                <Moment diff={posted} unit="days" /> days ago
+              </FooterLabel>
+            </FooterRight>
+          </JobFooter>
         </JobContent>
-        <JobFooter>
-          <FooterIcon> Public </FooterIcon>
-          <FooterLabel>{location}</FooterLabel>
-          <FooterIcon> Schedule </FooterIcon>
-          <FooterLabel>
-            <Moment diff={posted} unit="days" /> days ago
-          </FooterLabel>
-        </JobFooter>
       </div>
     </JobCard>
   );
