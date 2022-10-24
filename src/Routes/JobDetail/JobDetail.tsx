@@ -1,6 +1,7 @@
-import Header from "Components/common/Header/Header";
-import { Heading } from "Components/common/Heading/Heading";
-import Root from "Components/common/Root/Root";
+import ContentBody from "Components/common/ContentBody";
+import Header from "Components/common/Header";
+import Heading from "Components/common/Heading";
+import Root from "Components/common/Root";
 import React from "react";
 const JobDetail = () => {
   return (
@@ -8,6 +9,8 @@ const JobDetail = () => {
       <Header>
         <Heading></Heading>
       </Header>
+
+      <ContentBody></ContentBody>
     </Root>
   );
 };

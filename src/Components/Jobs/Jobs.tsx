@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Job, { IJob } from "../Job/Job";
-import { Container } from "./Jobs.styles";
 
 const Jobs = () => {
   const [jobs] = useState<IJob[]>([
@@ -78,11 +77,11 @@ const Jobs = () => {
     },
   ]);
   return (
-    <Container>
+    <>
       {jobs.slice(0, 5).map((job, index) => (
         <Job {...job} key={index} />
       ))}
-    </Container>
+    </>
   );
 };
 

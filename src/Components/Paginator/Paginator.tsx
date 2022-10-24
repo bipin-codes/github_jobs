@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, IconSpan } from "./Paginator.styles";
-import Button from "../common/Button/Button";
+import Button from "../common/Button";
 
 const Paginator: React.FC<{
   range: number;

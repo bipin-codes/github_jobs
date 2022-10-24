@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
 import {
-  Container,
   FullTimeContainer,
   FullTimeInput,
   IconSpan,
@@ -22,7 +21,7 @@ const Filter = () => {
   };
 
   return (
-    <Container>
+    <>
       <FullTimeContainer>
         <FullTimeInput id="full_time" />
         <InputLabel target="full_time">Full Time</InputLabel>
@@ -44,7 +43,7 @@ const Filter = () => {
           <InputLabel target={index.toString()}>{location}</InputLabel>
         </ToggleContainer>
       ))}
-    </Container>
+    </>
   );
 };
 export default Filter;

@@ -1,6 +1,7 @@
 import { StyledSpan } from "./Heading.styles";
-export const Heading = () => (
+const Heading = () => (
   <>
     <StyledSpan>Indeed </StyledSpan>Jobs
   </>
 );
+export default Heading;
