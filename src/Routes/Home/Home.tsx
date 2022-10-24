@@ -4,8 +4,10 @@ import Filter from "Components/Filters/Filter";
 import Jobs from "Components/Jobs/Jobs";
 import Paginator from "Components/Paginator/Paginator";
 import Search from "Components/Search/Search";
-import { HomeBody, HomeContainer, HomeHeader, StyledSpan } from "./Home.styles";
-
+import { HomeBody } from "./Home.styles";
+import { Heading } from "Components/common/Heading/Heading";
+import Root from "Components/common/Root/Root";
+import Header from "Components/common/Header/Header";
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
 
@@ -16,11 +18,11 @@ const Home = () => {
   }, [currentIndex]);
 
   return (
-    <HomeContainer>
-      <HomeHeader>
-        <StyledSpan>Indeed </StyledSpan>Jobs
+    <Root>
+      <Header>
+        <Heading />
         <Search />
-      </HomeHeader>
+      </Header>
       <HomeBody>
         <Filter></Filter>
         <Jobs></Jobs>
@@ -30,7 +32,7 @@ const Home = () => {
         currentIndex={currentIndex}
         onPageSelect={pageSelected}
       />
-    </HomeContainer>
+    </Root>
   );
 };
 

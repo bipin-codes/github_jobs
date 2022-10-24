@@ -16,9 +16,9 @@ export const JobCard = styled.div`
   }
   &:hover {
     transform: scale(1.005);
-
     border: solid 1px #b9bdcf;
     transition: transform 0.2s linear, border-color 0.2s linear;
+    cursor: pointer;
   }
 `;
 export const JobImage = styled.img.attrs<{ image: string }>(({ image }) => ({
