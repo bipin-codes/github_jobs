@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Filter from "Components/Filters";
 
 import Jobs from "Components/Jobs";
@@ -14,10 +14,6 @@ const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
 
   const pageSelected = (index: number) => setCurrentIndex(index);
-
-  useEffect(() => {
-    console.log(`Current Index ${currentIndex}`);
-  }, [currentIndex]);
 
   return (
     <Root>
