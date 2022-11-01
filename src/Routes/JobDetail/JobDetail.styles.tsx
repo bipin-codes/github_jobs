@@ -62,6 +62,13 @@ export const Tag = styled(FooterLeft)`
   margin-left: 0.5rem;
   line-height: 0
   padding: 0.5rem;
+
+  @media (max-width: 712px) {
+    flex-direction: column;
+  }
+  @media (max-width: 473px) {
+   margin: 1rem 0
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -73,6 +80,11 @@ export const TitleContainer = styled.div`
 export const TitleMain = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 473px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 export const HStack = styled.div`
   display: flex;
