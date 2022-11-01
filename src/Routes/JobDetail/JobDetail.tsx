@@ -1,9 +1,16 @@
-import ContentBody from "Components/common/ContentBody";
-import Header from "Components/common/Header";
-import Heading from "Components/common/Heading";
-import { JobTitle, Root } from "./JobDetail.styles";
-import React from "react";
+import React from 'react';
+
+import ContentBody from 'Components/common/ContentBody';
+import Header from 'Components/common/Header';
+import Heading from 'Components/common/Heading';
 import {
+  JobTitle,
+  Root,
+  Days,
+  Tag,
+  TitleContainer,
+  TitleMain,
+  HStack,
   IconSpan,
   Left,
   Navigation,
@@ -11,8 +18,13 @@ import {
   StyledContent,
   StyledDescription,
   StyledHeading,
-} from "./JobDetail.styles";
-import { FooterLeft } from "Components/Job/Job.styles";
+  DaysIcon,
+  JobDetailsContainer,
+  Logo,
+  CompanyTitle,
+  CompanyInfoContainer,
+  Location,
+} from './JobDetail.styles';
 
 const JobDetail = () => {
   return (
@@ -23,7 +35,7 @@ const JobDetail = () => {
 
       <ContentBody>
         <Left>
-          <Navigation to={"/"}>
+          <Navigation to={'/'}>
             <IconSpan>Arrow_Back</IconSpan>Back to search
           </Navigation>
           <StyledHeading>HOW TO APPLY</StyledHeading>
@@ -33,9 +45,27 @@ const JobDetail = () => {
           </StyledContent>
         </Left>
         <Right>
-          <JobTitle>
-            Front End Software Engineer <FooterLeft>Full Time</FooterLeft>
-          </JobTitle>
+          <TitleContainer>
+            <TitleMain>
+              <JobTitle>Front End Software Engineer</JobTitle>
+              <Tag>Full Time</Tag>
+            </TitleMain>
+            <HStack>
+              <DaysIcon>Schedule</DaysIcon>
+              <Days>5 days ago</Days>
+            </HStack>
+          </TitleContainer>
+
+          <JobDetailsContainer>
+            <Logo image={require('assets/images/im.png')}></Logo>
+            <CompanyInfoContainer>
+              <CompanyTitle>Kasisto</CompanyTitle>
+              <HStack>
+                <DaysIcon>public</DaysIcon>
+                <Location>New York</Location>
+              </HStack>
+            </CompanyInfoContainer>
+          </JobDetailsContainer>
           <StyledDescription>
             Humanizing Digital Experiences® Kasisto’s Digital Experience
             Platform, KAI, is designed for financial institutions to deliver the
