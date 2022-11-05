@@ -4,7 +4,6 @@ const activePage = css`
   background-color: #1e86ff;
   color: #fff;
 `;
-
 export const DefaultButton = styled.button<{ active: boolean }>`
   outline: none;
   border: 1px solid #b7bcce;
@@ -37,4 +36,13 @@ export const DefaultButton = styled.button<{ active: boolean }>`
         }
       }
     `}
+`;
+export const FixButton = styled(DefaultButton)`
+  padding: 0.2rem;
+  margin: 0 1rem;
+  width: 70px;
+  color: #fff;
+  outline: none;
+  background-color: #1e86ff;
+  border: none;
 `;

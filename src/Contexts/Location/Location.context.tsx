@@ -17,6 +17,7 @@ const defaultLocation: ILocation = {
 export const LocationContext = createContext(defaultLocation);
 export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [userLocation, setUserLocation] = useState(defaultLocation);
+  const [permissionStatus, setPermissionStatus] = useState("");
 
   const onSuccess = (data: GeolocationPosition) => {
     setUserLocation({
@@ -28,8 +29,7 @@ export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   const onError = (data: GeolocationPositionError) => {
-    const { code, message } = data;
-    console.log(message);
+    const { code } = data;
     let msgForUser = "There was some error while fetching your location.";
     if (code === 1) {
       msgForUser =
@@ -50,7 +50,25 @@ export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  }, []);
+  }, [permissionStatus]);
+
+  useEffect(() => {
+    const listenToPermissionChanged = async () => {
+      try {
+        const result = await navigator.permissions.query({
+          name: "geolocation",
+        });
+        if (result) {
+          result.onchange = () => {
+            setPermissionStatus(result.state);
+          };
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    listenToPermissionChanged();
+  });
 
   return (
     <LocationContext.Provider value={userLocation}>

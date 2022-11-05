@@ -1,15 +1,25 @@
-import { ButtonProps } from "./type";
+import { ButtonProps, BUTTON_TYPES_CLASSES } from "./type";
 import React from "react";
-import { DefaultButton } from "./Button.styles";
+import { DefaultButton, FixButton } from "./Button.styles";
+
+const getButton = (buttonType = BUTTON_TYPES_CLASSES.paginator) => {
+  const types = {
+    [BUTTON_TYPES_CLASSES.fix]: FixButton,
+    [BUTTON_TYPES_CLASSES.paginator]: DefaultButton,
+  };
+  return types[buttonType];
+};
 
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   isActive,
   enabled,
+  type,
 }) => {
+  const RequiredButton = getButton(type);
   return (
-    <DefaultButton
+    <RequiredButton
       disabled={!enabled}
       active={isActive}
       onClick={() => {
@@ -17,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
       }}
     >
       <span>{label}</span>
-    </DefaultButton>
+    </RequiredButton>
   );
 };
 

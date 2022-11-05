@@ -25,11 +25,13 @@ const Home = () => {
 
   const pageSelected = (index: number) => setCurrentIndex(index);
 
+  const ErrorPanel = () =>
+    !isSuccess && !isLoadingLocation ? <Error msg={message} /> : null;
+
   return (
     <Root>
       <Header>
-        {!isSuccess && !isLoadingLocation ? <Error msg={message} /> : null}
-
+        <ErrorPanel />
         <Heading />
         <Search />
       </Header>

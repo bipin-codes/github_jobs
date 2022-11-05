@@ -21,6 +21,7 @@ const Paginator: React.FC<{
   return (
     <Container>
       <Button
+        type="paginator"
         enabled={currentIndex !== 1}
         isActive={false}
         label="<"
@@ -30,6 +31,7 @@ const Paginator: React.FC<{
       {currentIndex - 1 > limit && (
         <>
           <Button
+            type="paginator"
             enabled={true}
             label={`1`}
             onClick={onClickIndex}
@@ -47,6 +49,7 @@ const Paginator: React.FC<{
         )
         .map((value, index) => (
           <Button
+            type="paginator"
             enabled={true}
             key={index}
             label={`${value}`}
@@ -60,6 +63,7 @@ const Paginator: React.FC<{
         <>
           <IconSpan>more_horiz</IconSpan>
           <Button
+            type="paginator"
             enabled={true}
             label={pages[pages.length - 1].toString()}
             onClick={onClickIndex}
@@ -69,6 +73,7 @@ const Paginator: React.FC<{
       )}
 
       <Button
+        type="paginator"
         enabled={currentIndex !== range}
         label=">"
         isActive={false}
