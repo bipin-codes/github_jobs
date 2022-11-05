@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Filter from "Components/Filters";
 
 import Jobs from "Components/Jobs";
@@ -10,7 +10,17 @@ import Header from "Components/common/Header";
 import ContentBody from "Components/common/ContentBody";
 import LeftContainer from "Components/common/ContentBody/LeftContainer";
 import RightContainer from "Components/common/ContentBody/RightContainer";
+
+import { LocationContext } from "Contexts/Location/Location.context";
+import Error from "Components/common/Error/Error";
 const Home = () => {
+  const {
+    location: userLocation,
+    loading: isLoadingLocation,
+    status: isSuccess,
+    message,
+  } = useContext(LocationContext);
+
   const [currentIndex, setCurrentIndex] = useState(1);
 
   const pageSelected = (index: number) => setCurrentIndex(index);
@@ -18,6 +28,8 @@ const Home = () => {
   return (
     <Root>
       <Header>
+        {!isSuccess && !isLoadingLocation ? <Error msg={message} /> : null}
+
         <Heading />
         <Search />
       </Header>

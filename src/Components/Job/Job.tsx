@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
+import IJob from "./types";
 import {
   Title,
   Company,
@@ -10,27 +11,19 @@ import {
   FooterIcon,
   FooterLabel,
   FooterRight,
-} from './Job.styles';
+} from "./Job.styles";
 
-import Moment from 'react-moment';
-import { useNavigate } from 'react-router-dom';
-export interface IJob {
-  company: string;
-  title: string;
-  logo: string;
-  tag: string;
-  location: string;
-  posted: Date;
-}
+import Moment from "react-moment";
+import { useNavigate } from "react-router-dom";
 
 const Job: FC<IJob> = ({ title, logo, company, tag, posted, location }) => {
   const navigate = useNavigate();
-  const onJobSelected = () => navigate('job');
+  const onJobSelected = () => navigate("job");
   return (
     <JobCard onClick={onJobSelected}>
-      <JobImage image={require('../../assets/images/im.png')}></JobImage>
+      <JobImage image={require("../../assets/images/im.png")}></JobImage>
       <div
-        style={{ display: 'flex', justifyContent: 'space-between', flex: 1 }}
+        style={{ display: "flex", justifyContent: "space-between", flex: 1 }}
       >
         <JobContent>
           <Company>{company}</Company>
