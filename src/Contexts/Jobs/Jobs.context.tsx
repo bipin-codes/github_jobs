@@ -76,13 +76,18 @@ const defaultJobs: Array<IJob> = [
   },
 ];
 
-export const JobsContext = createContext({ jobs: defaultJobs });
+const initialState = {
+  jobs: defaultJobs,
+  fullTime: false,
+  query: "",
+  location: "",
+};
+
+export const JobContext = createContext(initialState);
 
 export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [jobs] = useState(defaultJobs);
   return (
-    <JobsContext.Provider value={{ jobs: jobs }}>
-      {children}
-    </JobsContext.Provider>
+    <JobContext.Provider value={initialState}>{children}</JobContext.Provider>
   );
 };
