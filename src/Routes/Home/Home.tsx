@@ -15,7 +15,7 @@ import { LocationContext } from "Contexts/Location/Location.context";
 import Error from "Components/common/Error/Error";
 const Home = () => {
   const {
-    location: userLocation,
+    // location: userLocation,
     loading: isLoadingLocation,
     status: isSuccess,
     message,
