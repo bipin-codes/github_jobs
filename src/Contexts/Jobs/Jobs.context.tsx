@@ -1,78 +1,78 @@
-import { IJob } from "Components/Job/Job";
-import { createContext, useState, PropsWithChildren } from "react";
+import { IJob } from 'Components/Job/Job';
+import { createContext, useState, PropsWithChildren, useEffect } from 'react';
 
 const defaultJobs: Array<IJob> = [
   {
-    title: "Front-End Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
+    title: 'Front-End Software Engineer',
+    company: 'Kasisto',
+    tag: 'Full Time',
+    location: 'New York',
     posted: new Date(
       new Date().setDate(
         new Date().getDate() - Math.floor(Math.random() * 100 + 1)
       )
     ),
-    logo: "im.png",
+    logo: 'im.png',
   },
   {
-    title: "Back-End Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
+    title: 'Back-End Software Engineer',
+    company: 'Kasisto',
+    tag: 'Full Time',
+    location: 'New York',
     posted: new Date(
       new Date().setDate(
         new Date().getDate() - Math.floor(Math.random() * 100 + 1)
       )
     ),
-    logo: "im.png",
+    logo: 'im.png',
   },
   {
-    title: "FullStack Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
+    title: 'FullStack Software Engineer',
+    company: 'Kasisto',
+    tag: 'Full Time',
+    location: 'New York',
     posted: new Date(
       new Date().setDate(
         new Date().getDate() - Math.floor(Math.random() * 100 + 1)
       )
     ),
-    logo: "im.png",
+    logo: 'im.png',
   },
   {
-    title: "Blockchain Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
+    title: 'Blockchain Software Engineer',
+    company: 'Kasisto',
+    tag: 'Full Time',
+    location: 'New York',
     posted: new Date(
       new Date().setDate(
         new Date().getDate() - Math.floor(Math.random() * 100 + 1)
       )
     ),
-    logo: "im.png",
+    logo: 'im.png',
   },
   {
-    title: "Laravel Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
+    title: 'Laravel Software Engineer',
+    company: 'Kasisto',
+    tag: 'Full Time',
+    location: 'New York',
     posted: new Date(
       new Date().setDate(
         new Date().getDate() - Math.floor(Math.random() * 100 + 1)
       )
     ),
-    logo: "im.png",
+    logo: 'im.png',
   },
   {
-    title: "MEAN Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
+    title: 'MEAN Software Engineer',
+    company: 'Kasisto',
+    tag: 'Full Time',
+    location: 'New York',
     posted: new Date(
       new Date().setDate(
         new Date().getDate() - Math.floor(Math.random() * 100 + 1)
       )
     ),
-    logo: "im.png",
+    logo: 'im.png',
   },
 ];
 
