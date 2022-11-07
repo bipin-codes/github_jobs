@@ -1,9 +1,9 @@
-import { JobsContext } from "Contexts/Jobs/Jobs.context";
+import { JobContext } from "Contexts/Jobs/Jobs.context";
 import React, { useContext } from "react";
 import Job from "../Job/Job";
 
 const Jobs = () => {
-  const { jobs } = useContext(JobsContext);
+  const { jobs } = useContext(JobContext);
 
   return (
     <>

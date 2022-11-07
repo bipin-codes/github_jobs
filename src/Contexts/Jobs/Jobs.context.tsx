@@ -1,5 +1,6 @@
 import IJob from "Components/Job/types";
-import { createContext, useState, PropsWithChildren } from "react";
+import useFetchJobs from "hooks/useFetchJobs";
+import { createContext, PropsWithChildren, useEffect } from "react";
 
 const defaultJobs: Array<IJob> = [
   {
@@ -86,7 +87,7 @@ const initialState = {
 export const JobContext = createContext(initialState);
 
 export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [jobs] = useState(defaultJobs);
+  useFetchJobs();
   return (
     <JobContext.Provider value={initialState}>{children}</JobContext.Provider>
   );

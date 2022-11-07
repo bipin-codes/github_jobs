@@ -5,4 +5,5 @@ export default interface IJob {
   tag: string;
   location: string;
   posted: Date;
+  description?: string;
 }

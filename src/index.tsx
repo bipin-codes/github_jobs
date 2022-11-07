@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { LocationProvider } from "Contexts/Location/Location.context";
+import { JobsProvider } from "Contexts/Jobs/Jobs.context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <LocationProvider>
-      <App />
+      <JobsProvider>
+        <App />
+      </JobsProvider>
     </LocationProvider>
   </React.StrictMode>
 );
