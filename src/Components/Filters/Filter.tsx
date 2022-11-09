@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
+import { JobContext } from "Contexts/Jobs/Jobs.context";
+import React, { ChangeEvent, useContext, useState } from "react";
 import {
   FullTimeContainer,
   FullTimeInput,
@@ -12,8 +13,7 @@ import {
   ToggleInput,
 } from "./Filter.styles";
 const Filter = () => {
-  const locations = ["London", "Amsterdam", "Berlin", "New York"];
-
+  const { locations } = useContext(JobContext);
   const [location, setLocation] = useState("");
 
   const onInputChanged = (e: ChangeEvent<HTMLInputElement>) => {

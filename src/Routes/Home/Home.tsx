@@ -15,10 +15,7 @@ import { LocationContext } from "Contexts/Location/Location.context";
 import Error from "Components/common/Error/Error";
 const Home = () => {
   const {
-    // location: userLocation,
-    loading: isLoadingLocation,
-    status: isSuccess,
-    message,
+    userLocation: { loading: isLoadingLocation, status: isSuccess, message },
   } = useContext(LocationContext);
 
   const [currentIndex, setCurrentIndex] = useState(1);

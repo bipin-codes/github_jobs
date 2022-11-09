@@ -1,94 +1,60 @@
 import IJob from "Components/Job/types";
-import useFetchJobs from "hooks/useFetchJobs";
-import { createContext, PropsWithChildren, useEffect } from "react";
+import { createContext, PropsWithChildren, useState } from "react";
 
-const defaultJobs: Array<IJob> = [
-  {
-    title: "Front-End Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
-    posted: new Date(
-      new Date().setDate(
-        new Date().getDate() - Math.floor(Math.random() * 100 + 1)
-      )
-    ),
-    logo: "im.png",
-  },
-  {
-    title: "Back-End Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
-    posted: new Date(
-      new Date().setDate(
-        new Date().getDate() - Math.floor(Math.random() * 100 + 1)
-      )
-    ),
-    logo: "im.png",
-  },
-  {
-    title: "FullStack Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
-    posted: new Date(
-      new Date().setDate(
-        new Date().getDate() - Math.floor(Math.random() * 100 + 1)
-      )
-    ),
-    logo: "im.png",
-  },
-  {
-    title: "Blockchain Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
-    posted: new Date(
-      new Date().setDate(
-        new Date().getDate() - Math.floor(Math.random() * 100 + 1)
-      )
-    ),
-    logo: "im.png",
-  },
-  {
-    title: "Laravel Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
-    posted: new Date(
-      new Date().setDate(
-        new Date().getDate() - Math.floor(Math.random() * 100 + 1)
-      )
-    ),
-    logo: "im.png",
-  },
-  {
-    title: "MEAN Software Engineer",
-    company: "Kasisto",
-    tag: "Full Time",
-    location: "New York",
-    posted: new Date(
-      new Date().setDate(
-        new Date().getDate() - Math.floor(Math.random() * 100 + 1)
-      )
-    ),
-    logo: "im.png",
-  },
-];
+const DEFAULT_LOCATIONS = ["London", "Amsterdam", "Berlin", "New York"];
 
-const initialState = {
-  jobs: defaultJobs,
-  fullTime: false,
-  query: "",
-  location: "",
+export type IJobContext = {
+  jobs: Array<IJob>;
+  setJobs: (jobs: Array<IJob>) => void;
+
+  fullTime: boolean;
+  setFullTime: (checked: boolean) => void;
+
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+
+  locationQuery: string;
+  setLocationQuery: (query: string) => void;
+
+  locations: Array<string>;
 };
 
-export const JobContext = createContext(initialState);
+export const JobContext = createContext<IJobContext>({
+  jobs: new Array<IJob>(),
+  setJobs: (jobs: Array<IJob>) => {},
+
+  fullTime: false,
+  setFullTime: (checked: boolean) => {},
+
+  searchQuery: "",
+  setSearchQuery: (query: string) => {},
+
+  locationQuery: "",
+  setLocationQuery: (query: string) => {},
+
+  locations: DEFAULT_LOCATIONS,
+});
 
 export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  useFetchJobs();
-  return (
-    <JobContext.Provider value={initialState}>{children}</JobContext.Provider>
-  );
+  const [jobs, setJobs] = useState<Array<IJob>>([]);
+  const [fullTime, setFullTime] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [locationQuery, setLocationQuery] = useState("");
+
+  const values = {
+    jobs,
+    setJobs,
+
+    searchQuery,
+    setSearchQuery,
+
+    locationQuery,
+    setLocationQuery,
+
+    fullTime,
+    setFullTime,
+
+    locations: DEFAULT_LOCATIONS,
+  };
+  return <JobContext.Provider value={values}>{children}</JobContext.Provider>;
 };

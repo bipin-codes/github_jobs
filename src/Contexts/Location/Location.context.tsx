@@ -14,10 +14,13 @@ const defaultLocation: ILocation = {
   loading: true,
 };
 
-export const LocationContext = createContext(defaultLocation);
+export const LocationContext = createContext({ userLocation: defaultLocation });
+
 export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [userLocation, setUserLocation] = useState(defaultLocation);
   const [permissionStatus, setPermissionStatus] = useState("");
+
+  const value = { userLocation };
 
   const onSuccess = (data: GeolocationPosition) => {
     setUserLocation({
@@ -69,9 +72,8 @@ export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
     };
     listenToPermissionChanged();
   });
-
   return (
-    <LocationContext.Provider value={userLocation}>
+    <LocationContext.Provider value={value}>
       {children}
     </LocationContext.Provider>
   );
