@@ -1,9 +1,9 @@
 export default interface IJob {
-  company: string;
+  company: { display_name: string };
   title: string;
   logo: string;
-  tag: string;
-  location: string;
-  posted: Date;
+  contract_type: string;
+  location: { display_name: string };
+  created: Date;
   description?: string;
 }

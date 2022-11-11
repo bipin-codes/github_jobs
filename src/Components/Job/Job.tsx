@@ -16,7 +16,14 @@ import {
 import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
 
-const Job: FC<IJob> = ({ title, logo, company, tag, posted, location }) => {
+const Job: FC<IJob> = ({
+  title,
+  logo,
+  company,
+  contract_type,
+  created,
+  location,
+}) => {
   const navigate = useNavigate();
   const onJobSelected = () => navigate("job");
   return (
@@ -26,17 +33,17 @@ const Job: FC<IJob> = ({ title, logo, company, tag, posted, location }) => {
         style={{ display: "flex", justifyContent: "space-between", flex: 1 }}
       >
         <JobContent>
-          <Company>{company}</Company>
+          <Company>{company.display_name}</Company>
           <Title>{title}</Title>
 
           <JobFooter>
-            <FooterLeft>{tag}</FooterLeft>
+            <FooterLeft>{contract_type}</FooterLeft>
             <FooterRight>
               <FooterIcon> Public </FooterIcon>
-              <FooterLabel>{location}</FooterLabel>
+              <FooterLabel>{location.display_name}</FooterLabel>
               <FooterIcon> Schedule </FooterIcon>
               <FooterLabel>
-                <Moment diff={posted} unit="days" /> days ago
+                <Moment diff={created} unit="days" /> days ago
               </FooterLabel>
             </FooterRight>
           </JobFooter>
