@@ -1,7 +1,7 @@
-import { StyledSpan } from "./Heading.styles";
+import { HeadingContainer, StyledSpan } from "./Heading.styles";
 const Heading = () => (
-  <>
-    <StyledSpan>Indeed </StyledSpan>Jobs
-  </>
+  <HeadingContainer>
+    <StyledSpan>adzuna </StyledSpan>Jobs
+  </HeadingContainer>
 );
 export default Heading;

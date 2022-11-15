@@ -7,7 +7,7 @@ const Jobs = () => {
 
   return (
     <>
-      {jobs.slice(0, 5).map((job, index) => (
+      {jobs.slice(0, 10).map((job, index) => (
         <Job {...job} key={index} />
       ))}
     </>

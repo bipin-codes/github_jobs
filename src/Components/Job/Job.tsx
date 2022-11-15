@@ -16,6 +16,8 @@ import {
 import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
 
+const cityName = (name: string) => name.split(",")[0];
+
 const Job: FC<IJob> = ({
   title,
   logo,
@@ -28,7 +30,7 @@ const Job: FC<IJob> = ({
   const onJobSelected = () => navigate("job");
   return (
     <JobCard onClick={onJobSelected}>
-      <JobImage image={require("../../assets/images/im.png")}></JobImage>
+      <JobImage image={"https://via.placeholder.com/150"}></JobImage>
       <div
         style={{ display: "flex", justifyContent: "space-between", flex: 1 }}
       >
@@ -40,7 +42,7 @@ const Job: FC<IJob> = ({
             <FooterLeft>{contract_type}</FooterLeft>
             <FooterRight>
               <FooterIcon> Public </FooterIcon>
-              <FooterLabel>{location.display_name}</FooterLabel>
+              <FooterLabel>{cityName(location.display_name)}</FooterLabel>
               <FooterIcon> Schedule </FooterIcon>
               <FooterLabel>
                 <Moment diff={created} unit="days" /> days ago

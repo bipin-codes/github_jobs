@@ -26,8 +26,8 @@ export const JobImage = styled.img.attrs<{ image: string }>(({ image }) => ({
 }))<{
   image: string;
 }>`
-  height: 90px;
-  width: 90px;
+  height: 100px;
+  width: 100px;
   border-radius: 4px;
 `;
 

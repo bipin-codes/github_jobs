@@ -66,15 +66,29 @@ export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
     locations: DEFAULT_LOCATIONS,
   };
 
+  const generateRequiredData = (data: any): { count: number; jobs: IJob[] } => {
+    return {
+      count: data.count,
+      jobs: data.results.map((result: any) => ({
+        company: { display_name: result.company.display_name },
+        title: result.title,
+        logo: "",
+        contract_type: result.contract_type,
+        location: { display_name: result.location.display_name },
+        created: new Date(result.created),
+        description: result.description,
+      })),
+    };
+  };
+
   useEffect(() => {
     const getJobsData = async () => {
-      const response = (await (await fetch(url)).json()) as {
-        count: number;
-        results: Array<IJob>;
-      };
-      const { count, results: jobs } = response;
-      console.log(jobs);
+      const response = await fetch(url);
+
+      const data = await response.json();
+      const { count, jobs } = generateRequiredData(data);
       setTotalJobs(count);
+      setJobs(jobs);
     };
     getJobsData();
   }, [url]);
