@@ -13,10 +13,21 @@ import {
   FooterRight,
 } from "./Job.styles";
 
-import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
 
 const cityName = (name: string) => name.split(",")[0];
+const getDays = (from: string) => {
+  let timeDifference = Date.now() - new Date(from).getTime();
+  let dayMilliSeconds = 1000 * 60 * 60 * 24;
+  let totalDays = Math.abs(timeDifference / dayMilliSeconds); // it returns negative value if start date < end date
+  totalDays = Math.floor(totalDays); // to get complete days
+  return totalDays;
+};
+
+const filteredName = (name: string) => {
+  if (name.indexOf("_") > -1) return name.replace("_", " ");
+  return name;
+};
 
 const Job: FC<IJob> = ({
   title,
@@ -39,13 +50,16 @@ const Job: FC<IJob> = ({
           <Title>{title}</Title>
 
           <JobFooter>
-            <FooterLeft>{contract_type}</FooterLeft>
+            {contract_type && (
+              <FooterLeft>{filteredName(contract_type)}</FooterLeft>
+            )}
             <FooterRight>
               <FooterIcon> Public </FooterIcon>
               <FooterLabel>{cityName(location.display_name)}</FooterLabel>
               <FooterIcon> Schedule </FooterIcon>
               <FooterLabel>
-                <Moment diff={created} unit="days" /> days ago
+                {getDays(created.toString())}
+                days ago
               </FooterLabel>
             </FooterRight>
           </JobFooter>

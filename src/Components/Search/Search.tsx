@@ -1,12 +1,13 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useContext } from "react";
 import { Button, Container, IconSpan, Input, Root } from "./Search.styles";
-
+import { JobContext } from "Contexts/Jobs/Jobs.context";
 const Search = () => {
-  const [term, setTerm] = useState("");
+  const { searchQuery, setSearchQuery, setSearching } = useContext(JobContext);
 
   const onInputChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    setTerm(e.target.value);
+    setSearchQuery(e.target.value);
   };
+  const onSearchClick = () => setSearching(true);
 
   return (
     <Root img={require("../../assets/images/backgroundImg.png")}>
@@ -14,10 +15,10 @@ const Search = () => {
         <IconSpan>Work</IconSpan>
         <Input
           placeholder="Title, companies, expertise or benefits"
-          value={term}
+          value={searchQuery}
           onChange={onInputChanged}
         />
-        <Button>Search</Button>
+        <Button onClick={onSearchClick}>Search</Button>
       </Container>
     </Root>
   );

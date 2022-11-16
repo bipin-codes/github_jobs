@@ -1,5 +1,5 @@
 import { JobContext } from "Contexts/Jobs/Jobs.context";
-import React, { ChangeEvent, useContext, useState } from "react";
+import React, { ChangeEvent, useContext } from "react";
 import {
   FullTimeContainer,
   FullTimeInput,
@@ -13,17 +13,29 @@ import {
   ToggleInput,
 } from "./Filter.styles";
 const Filter = () => {
-  const { locations } = useContext(JobContext);
-  const [location, setLocation] = useState("");
+  const { locations, fullTime, setFullTime, locationQuery, setLocationQuery } =
+    useContext(JobContext);
 
   const onInputChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
+    setLocationQuery(e.target.value);
+  };
+
+  const onCheckboxChanged = (_: ChangeEvent<HTMLInputElement>) => {
+    setFullTime(!fullTime);
+  };
+
+  const onToggleLocation = (e: ChangeEvent<HTMLInputElement>) => {
+    setLocationQuery(e.target.value);
   };
 
   return (
     <>
       <FullTimeContainer>
-        <FullTimeInput id="full_time" />
+        <FullTimeInput
+          id="full_time"
+          checked={fullTime}
+          onChange={onCheckboxChanged}
+        />
         <InputLabel target="full_time">Full Time</InputLabel>
       </FullTimeContainer>
       <LocationContainer>
@@ -32,14 +44,19 @@ const Filter = () => {
           <IconSpan>public</IconSpan>
           <Input
             placeholder="City, state, zip code or country"
-            value={location}
+            value={locationQuery}
             onChange={onInputChanged}
           />
         </LocationFilter>
       </LocationContainer>
       {locations.map((location, index) => (
         <ToggleContainer key={index}>
-          <ToggleInput value={location} id={index.toString()}></ToggleInput>
+          <ToggleInput
+            onChange={onToggleLocation}
+            value={location}
+            id={index.toString()}
+            checked={location === locationQuery}
+          ></ToggleInput>
           <InputLabel target={index.toString()}>{location}</InputLabel>
         </ToggleContainer>
       ))}

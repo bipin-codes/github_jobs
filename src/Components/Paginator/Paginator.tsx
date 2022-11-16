@@ -7,17 +7,17 @@ const Paginator: React.FC<{
   currentIndex: number;
   onPageSelect: (pageNumber: number) => void;
 }> = ({ range, currentIndex, onPageSelect }) => {
+  const [pages, setPages] = useState([0]);
+  const limit = 1;
+
   const onClickPrev = () => onPageSelect(currentIndex - 1);
   const onClickNext = () => onPageSelect(currentIndex + 1);
   const onClickIndex = (index: number) => onPageSelect(index);
 
-  const [pages, setPages] = useState([0]);
-
-  const limit = 1;
-
   useEffect(() => {
     setPages(Array.from(Array(range + 1).keys()).filter((x) => x !== 0));
   }, [range]);
+
   return (
     <Container>
       <Button

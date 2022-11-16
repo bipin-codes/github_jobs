@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Filter from "Components/Filters";
 
 import Jobs from "Components/Jobs";
@@ -13,14 +13,20 @@ import RightContainer from "Components/common/ContentBody/RightContainer";
 
 import { LocationContext } from "Contexts/Location/Location.context";
 import Error from "Components/common/Error/Error";
+import { JobContext } from "Contexts/Jobs/Jobs.context";
 const Home = () => {
   const {
     userLocation: { loading: isLoadingLocation, status: isSuccess, message },
   } = useContext(LocationContext);
 
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const {
+    loadingJobs: isLoadingJobs,
+    totalJobs,
+    currentPage,
+    setCurrentPage,
+  } = useContext(JobContext);
 
-  const pageSelected = (index: number) => setCurrentIndex(index);
+  const pageSelected = (index: number) => setCurrentPage(index);
 
   const ErrorPanel = () =>
     !isSuccess && !isLoadingLocation ? <Error msg={message} /> : null;
@@ -40,11 +46,14 @@ const Home = () => {
           <Jobs></Jobs>
         </RightContainer>
       </ContentBody>
-      <Paginator
-        range={100}
-        currentIndex={currentIndex}
-        onPageSelect={pageSelected}
-      />
+
+      {!isLoadingJobs && (
+        <Paginator
+          range={Math.floor(totalJobs / 10)}
+          currentIndex={currentPage}
+          onPageSelect={pageSelected}
+        />
+      )}
     </Root>
   );
 };
