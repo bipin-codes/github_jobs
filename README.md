@@ -4,7 +4,7 @@
 
 # No CSS LIBRARY USED
 
-# Indeed Job API used.
+# Adzuna Job API used.
 
 # StyledComponent library used
 
