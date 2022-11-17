@@ -34,7 +34,7 @@ export const Input = styled.input.attrs({
   border: none;
   outline: none;
   background-color: #fff;
-  flex-grow: 8;
+  flex-grow: 20;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 14px;

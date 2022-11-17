@@ -18,7 +18,7 @@ const Paginator: React.FC<{
     setPages(Array.from(Array(range + 1).keys()).filter((x) => x !== 0));
   }, [range]);
 
-  return (
+  return pages.length === 0 ? null : (
     <Container>
       <Button
         type="paginator"

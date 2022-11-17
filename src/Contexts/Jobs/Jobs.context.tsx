@@ -77,25 +77,28 @@ export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
         location: { display_name: result.location.display_name },
         created: new Date(result.created),
         description: result.description,
+        redirect_url: result.redirect_url,
       })),
     };
   };
 
   useEffect(() => {
+    setShouldSearch(true); //Every time index changes call the API again.
+  }, [currentPage]);
+
+  useEffect(() => {
     const getJobsData = async () => {
-      let url = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${
+      let url = `https://api.adzuna.com/v1/api/jobs/gb/search/${currentPage}?app_id=${
         process.env.REACT_APP_ID
       }&app_key=${process.env.REACT_APP_JOBS_API_KEY}&full_time=${
         fullTime ? 1 : ""
-      }&results_per_page=10&what=${
+      }&results_per_page=8&what=${
         searchQuery ? searchQuery : "software developer"
-      }&content-type=application/json}`;
+      }&where=${locationQuery}&content-type=application/json}`;
 
       try {
         const response = await fetch(url);
-        console.log(response);
         const data = await response.json();
-        console.log(data);
         const { count, jobs } = generateRequiredData(data);
 
         setShouldSearch(false);
@@ -108,8 +111,11 @@ export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
       }
     };
 
-    if (shouldSearch) getJobsData();
-  }, [shouldSearch, locationQuery, fullTime, searchQuery]);
+    if (shouldSearch) {
+      setLoadingJobs(true);
+      getJobsData();
+    }
+  }, [currentPage, shouldSearch, locationQuery, fullTime, searchQuery]);
 
   return <JobContext.Provider value={values}>{children}</JobContext.Provider>;
 };

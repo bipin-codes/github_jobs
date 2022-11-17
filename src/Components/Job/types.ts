@@ -6,4 +6,5 @@ export default interface IJob {
   location: { display_name: string };
   created: Date;
   description?: string;
+  redirect_url: string;
 }

@@ -7,9 +7,11 @@ const Jobs = () => {
 
   return (
     <>
-      {jobs.slice(0, 10).map((job, index) => (
-        <Job {...job} key={index} />
-      ))}
+      {jobs.length > 0 ? (
+        jobs.slice(0, 10).map((job, index) => <Job job={job} key={index} />)
+      ) : (
+        <h1 style={{ textAlign: "center" }}>No Jobs Found!</h1>
+      )}
     </>
   );
 };

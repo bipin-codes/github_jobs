@@ -14,31 +14,12 @@ import {
 } from "./Job.styles";
 
 import { useNavigate } from "react-router-dom";
+import { cityName, filteredName, getDays } from "utils/helper";
 
-const cityName = (name: string) => name.split(",")[0];
-const getDays = (from: string) => {
-  let timeDifference = Date.now() - new Date(from).getTime();
-  let dayMilliSeconds = 1000 * 60 * 60 * 24;
-  let totalDays = Math.abs(timeDifference / dayMilliSeconds); // it returns negative value if start date < end date
-  totalDays = Math.floor(totalDays); // to get complete days
-  return totalDays;
-};
-
-const filteredName = (name: string) => {
-  if (name.indexOf("_") > -1) return name.replace("_", " ");
-  return name;
-};
-
-const Job: FC<IJob> = ({
-  title,
-  logo,
-  company,
-  contract_type,
-  created,
-  location,
-}) => {
+const Job: FC<{ job: IJob }> = ({ job }) => {
   const navigate = useNavigate();
-  const onJobSelected = () => navigate("job");
+  const { title, company, contract_type, created, location } = job;
+  const onJobSelected = () => navigate("job", { state: { job } });
   return (
     <JobCard onClick={onJobSelected}>
       <JobImage image={"https://via.placeholder.com/150"}></JobImage>

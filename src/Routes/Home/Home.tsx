@@ -14,6 +14,7 @@ import RightContainer from "Components/common/ContentBody/RightContainer";
 import { LocationContext } from "Contexts/Location/Location.context";
 import Error from "Components/common/Error/Error";
 import { JobContext } from "Contexts/Jobs/Jobs.context";
+import Loader from "Components/common/Loader";
 const Home = () => {
   const {
     userLocation: { loading: isLoadingLocation, status: isSuccess, message },
@@ -33,27 +34,28 @@ const Home = () => {
 
   return (
     <Root>
-      <Header>
-        <ErrorPanel />
-        <Heading />
-        <Search />
-      </Header>
-      <ContentBody>
-        <LeftContainer>
-          <Filter></Filter>
-        </LeftContainer>
-        <RightContainer>
-          <Jobs></Jobs>
-        </RightContainer>
-      </ContentBody>
+      <>
+        <Header>
+          <ErrorPanel />
+          <Heading />
+          <Search />
+        </Header>
+        <ContentBody>
+          <LeftContainer>
+            <Filter></Filter>
+          </LeftContainer>
 
-      {!isLoadingJobs && (
+          <RightContainer>
+            {isLoadingJobs ? <Loader /> : <Jobs />}
+          </RightContainer>
+        </ContentBody>
+
         <Paginator
-          range={Math.floor(totalJobs / 10)}
+          range={Math.floor(totalJobs / 8)}
           currentIndex={currentPage}
           onPageSelect={pageSelected}
         />
-      )}
+      </>
     </Root>
   );
 };
