@@ -4,13 +4,13 @@ export interface ILocation {
   status: boolean;
   message: string;
   loading: boolean;
-  location: GeolocationPosition | undefined;
+  location: string;
 }
 
 const defaultLocation: ILocation = {
   status: false,
   message: "",
-  location: undefined,
+  location: "",
   loading: true,
 };
 
@@ -22,11 +22,17 @@ export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const value = { userLocation };
 
-  const onSuccess = (data: GeolocationPosition) => {
+  const onSuccess = async (data: GeolocationPosition) => {
+    const { city } = await (
+      await fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${data.coords.latitude}&longitude=${data.coords.longitude}`
+      )
+    ).json();
+
     setUserLocation({
       status: true,
       message: "Location fetched Successfully!",
-      location: data,
+      location: city,
       loading: false,
     });
   };
@@ -47,7 +53,7 @@ export const LocationProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setUserLocation({
       status: false,
       message: msgForUser,
-      location: undefined,
+      location: "",
       loading: false,
     });
   };

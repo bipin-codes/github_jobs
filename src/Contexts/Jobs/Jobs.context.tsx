@@ -1,44 +1,52 @@
 import IJob from "Components/Job/types";
-import { createContext, PropsWithChildren, useEffect, useState } from "react";
+import { LocationContext } from "Contexts/Location/Location.context";
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import IJobContext from "./type";
 
 import { DEFAULT_LOCATIONS } from "./type";
 
 export const JobContext = createContext<IJobContext>({
   jobs: new Array<IJob>(),
-  setJobs: (jobs: Array<IJob>) => {},
+  setJobs: (_: Array<IJob>) => {},
 
   fullTime: false,
-  setFullTime: (checked: boolean) => {},
+  setFullTime: (_: boolean) => {},
 
   searchQuery: "",
-  setSearchQuery: (query: string) => {},
+  setSearchQuery: (_: string) => {},
 
   locationQuery: "",
-  setLocationQuery: (query: string) => {},
+  setLocationQuery: (_: string) => {},
 
   totalJobs: 0,
-  setTotalJobs: (value: number) => {},
+  setTotalJobs: (_: number) => {},
 
   searching: true,
-  setSearching: (status: boolean) => {},
+  setSearching: (_: boolean) => {},
 
   currentPage: 1,
-  setCurrentPage: (number: number) => {},
+  setCurrentPage: (_: number) => {},
 
   locations: DEFAULT_LOCATIONS,
   loadingJobs: true,
 });
 
 export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
+  const { userLocation } = useContext(LocationContext);
   const [jobs, setJobs] = useState<Array<IJob>>([]);
   const [fullTime, setFullTime] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [locationQuery, setLocationQuery] = useState("");
   const [totalJobs, setTotalJobs] = useState(0);
-  const [shouldSearch, setShouldSearch] = useState(true);
+  const [shouldSearch, setShouldSearch] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loadingJobs, setLoadingJobs] = useState(true);
+  const [loadingJobs, setLoadingJobs] = useState(userLocation.loading);
 
   const values = {
     jobs,
@@ -83,8 +91,12 @@ export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   useEffect(() => {
-    setShouldSearch(true); //Every time index changes call the API again.
-  }, [currentPage]);
+    if (!userLocation.loading) {
+      //if user's location is already resolved.
+      setLocationQuery(userLocation.location);
+      setShouldSearch(true); //Every time index changes call the API again.
+    }
+  }, [userLocation, currentPage]);
 
   useEffect(() => {
     const getJobsData = async () => {
