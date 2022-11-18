@@ -94,6 +94,12 @@ export const JobsProvider: React.FC<PropsWithChildren> = ({ children }) => {
     if (!userLocation.loading) {
       //if user's location is already resolved.
       setLocationQuery(userLocation.location);
+      setShouldSearch(true);
+    }
+  }, [userLocation]);
+
+  useEffect(() => {
+    if (!userLocation.loading) {
       setShouldSearch(true); //Every time index changes call the API again.
     }
   }, [userLocation, currentPage]);
